@@ -32,12 +32,6 @@ export default {
 
 <style>
 
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
   
   .login-form_container {
     background: url("https://wallpaperaccess.com/full/1745569.png") no-repeat center center fixed;

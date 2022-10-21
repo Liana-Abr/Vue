@@ -36,12 +36,6 @@ export default {
 </script>
 
 <style>
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
   
   .reg_form_container {
     background: url("https://img.freepik.com/free-vector/graphic-design-geometric-wallpaper_52683-34399.jpg?w=2000&t=st=1665771472~exp=1665772072~hmac=fa783c0e1bbcb9def3c35390c9e0497bccb532ac46b6a9b242d3b771d17299e7") no-repeat center center fixed;
