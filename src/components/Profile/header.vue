@@ -83,6 +83,7 @@ input[type=submit]{
 /*  cursor: pointer;*/
 /*}*/
 .header_container{
+  background-color: white;
   box-shadow: -5px 10px 10px -8px #bdbdbd;
   border-radius: 25px;
   padding: 0 0 20px 0;
@@ -92,6 +93,7 @@ input[type=submit]{
   align-items: center;
   width: 1200px;
   position: relative;
+  left:26%;
 }
 
 .header_container a{
