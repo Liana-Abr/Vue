@@ -5,9 +5,8 @@
 <!--    <my-card v-for="d in days" v-bind:text="d" v-bind:key="d"></my-card>-->
 <!--  </div>-->
 <!--</template>-->
+<!--страница профиля-->
 <template>
-
-  <page-header></page-header>
   <div class="profile">
     <div class="profile__contacts">
       <profile-picture></profile-picture>
@@ -43,8 +42,6 @@ import Title from "@/components/Profile/title";
 import Portfolio from "@/components/Profile/portfolio";
 import Tools from "@/components/Profile/tools";
 import Work from "@/components/Profile/work";
-import Header from "@/components/Profile/header";
-
 
 
 export default {
@@ -57,7 +54,6 @@ export default {
     "profile-portfolio": Portfolio,
     "profile-tools": Tools,
     "profile-works": Work,
-    "page-header": Header,
 
   },
   data(){

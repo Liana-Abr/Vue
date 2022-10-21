@@ -6,17 +6,22 @@
 <!--  </div>-->
 <!--</template>-->
 <template>
-  <user-profile></user-profile>
+  <page-header></page-header>
+  <main-page></main-page>
 </template>
 
 <script>
   // import Card from "./components/Card/index.vue";
-  import Profile from "@/components/Profile";
+
+  import Header from "@/components/Profile/header";
+  import Main from "@/components/Main";
+
+
   export default {
     name: 'App',
     components: {
-      // "my-card": Card,
-      "user-profile": Profile
+      "page-header": Header,
+      "main-page": Main
 
     },
     data(){
