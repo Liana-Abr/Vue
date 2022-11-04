@@ -1,20 +1,20 @@
 <template>
   <div class="login-form_container">
     <div class="login-form">
-        <form>
+        <form @submit="authUser">
           <h1>Вход</h1>
           <div class="content">
             <div class="input-field">
-              <input type="email" placeholder="почта" autocomplete="nope">
+              <input type="email" placeholder="почта" name="email" autocomplete="nope" v-model="authEmail" >
             </div>
             <div class="input-field">
-              <input type="password" placeholder="пароль" autocomplete="new-password">
+              <input type="password" placeholder="пароль" name="password" autocomplete="new-password" v-model="authPwd" >
             </div>
             <router-link to="/changepwd" class="changepwd">Забыли пароль?</router-link>
           </div>
           <div class="action">
             <router-link to="/auth" class="reg">Зарегестрироваться</router-link>
-            <button class="sign">Войти</button>
+            <button type="submit" class="sign">Войти</button>
           </div>
         </form>
       </div>
@@ -25,27 +25,59 @@
 
 <script>
 export default {
-  name: 'login-page'
+  name: 'login-page',
+  data(){
+    return{
+      authEmail: "",
+      authPwd: "",
+      checkPwd: false
+
+    }
+  },
+  methods:{
+      authUser: async function(e) {
+        e.preventDefault();
+        let body = {
+          email: this.authEmail,
+          password: this.authPwd
+        }
+        const data = await fetch("https://dream-design-server.herokuapp.com/api/users/auth", {
+          method: "post",
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application.json"
+          },
+          body: JSON.stringify(body)
+        }).then(res => res.json());
+        if (data.message === "ok") {
+          e.target.reset();
+          localStorage.setItem("user", JSON.stringify(data.data));
+          this.$router.replace("/profile")
+        } else {
+          alert(data.message);
+        }
+    }
+  }
 }
 
 </script>
 
 <style>
 
-  
+
   .login-form_container {
     background: url("https://wallpaperaccess.com/full/1745569.png") no-repeat center center fixed;
     background-size: cover ;
     border-radius: 25px;
     font-family: 'Rubik', sans-serif;
     display: flex;
-    justify-content: center;
     align-items: center;
     width: 46%;
     height: 70%;
     position: absolute;
+    left: 25%;
   }
-  
+
   .login-form {
     background: #fff;
     width: 500px;
@@ -77,17 +109,17 @@ export default {
     outline: none;
     transition: all .2s;
   }
-  
-  
+
+
   .login-form .action {
     display: flex;
     flex-direction: row;
   }
-  .login-form .action button, 
+  .login-form .action button,
   .login-form .reg{
     text-decoration: none;
     color: #747474;
-    letter-spacing: 0.2px;
+
     text-transform: uppercase;
     display: inline-block;
     margin-top: 20px;
@@ -97,14 +129,13 @@ export default {
     font-size: 12px;
     font-family: 'Rubik', sans-serif;
     cursor: pointer;
-    text-transform: uppercase;
+
     background: #e5e5e6;
-    color: rgb(121, 121, 121);
-    letter-spacing: 0.2px;
+
     outline: 0;
     transition: all .3s;
   }
-  .login-form 
+
   .sign:hover {
     background: #3976e9;
     color: #fff;

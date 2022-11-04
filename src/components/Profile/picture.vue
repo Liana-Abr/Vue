@@ -13,7 +13,7 @@ export default {
 </script>
 <style scoped>
   .profile__image{
-    background-image: url("https://static-cse.canva.com/blob/944262/1600w-YTfEMXMuMCs.jpg");
+    background-image: url("https://cdn-icons-png.flaticon.com/512/206/206881.png");
     background-size: cover ;
     border-radius: 50%;
     /*background-color: #e3fe52;*/

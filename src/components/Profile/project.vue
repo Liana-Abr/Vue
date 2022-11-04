@@ -1,58 +1,84 @@
-<!-- <template>
- <div class="profile-portfolio"></div>
-</template>
-
-<script>
-export default {
-  name: "profile-project",
-  
-}
-</script>
-
-<style scoped>
-    .profile__about__project{
-        width: 100px;
-        height: 100px;
-        border-radius: 4px;
-        background-color: cadetblue;
-    }
-</style> -->
-
 <template>
-    <div class="profile__portfolio__project" :style="{width: size + 'px',height:size + 'px','background-image': 'url(' + images[0] + ')' }"></div>
-    <div class="profile__portfolio__project" :style="{width: size + 'px',height:size + 'px','background-image': 'url(' + images[1] + ')'}"></div>
-    <div class="profile__portfolio__project" :style="{width: size + 'px',height:size + 'px','background-image': 'url(' + images[2] + ')'}"></div>
-    <div class="profile__portfolio__project" :style="{width: size + 'px',height:size + 'px','background-image': 'url(' + images[3] + ')'}"></div>
-    <div class="profile__portfolio__project" :style="{width: size + 'px',height:size + 'px','background-image': 'url(' + images[4] + ')'}"></div>
-    <div class="profile__portfolio__project" :style="{width: size + 'px',height:size + 'px','background-image': 'url(' + images[5] + ')'}"></div>
+<!--  квадратик с проектом-->
+  <div class="portfolio">
+<!--    <div class="p">{{userData.name}}</div>-->
+      <div class="profile__item" v-for="item of projects" :key="item._id">
+        <div class="profile__title">
+          <h2>{{item.title}}</h2>
+          <button @click="removeProject(item._id)">X</button>
+        </div>
+
+        <div class="portfolio__image" :style="{backgroundImage: `url(${item.main_image})`}"></div>
+
+        <!-- <p v-show="item.description">{{item.description}}</p>-->
+        <a :href="item.link" target="_blank" v-show="item.link"></a>
+      </div>
+    </div>
 
   </template>
   <script>
   export default {
     name: "profile-project",
+    props:["userData"],
     data(){
       return {
-        size: 200,
-        images:[
-            "https://i.graphicmama.com/blog/wp-content/uploads/2020/02/25102210/AESTHETIC-POSTER-DESIGN.jpg",
-            "https://thedesignest.net/wp-content/uploads/2022/03/How-To-Spot-Bad-Graphic-Design.jpg",
-            "https://images.wondershare.com/mockitt/graphic-design/website-3d-graphic-design-example.jpg",
-            "https://stadamedia.co.uk/wp-content/uploads/2020/05/WORK-SAMPLES-08.jpg",
-            "https://venngage-wordpress.s3.amazonaws.com/uploads/2018/01/Bright-Bold-Social-Media-Graphic-Design-Example-2.jpg",
-            "https://www.selfmadedesigner.com/wp-content/uploads/2020/06/Oli-Stelander-continuation-example-1.png"
-        ]
+        projects: this.userData.portfolio,
+      }
+    },
+    methods:{
+      addProject() {
+        this.$emit("showPopup");
+      },
+      removeProject(id){
+        fetch(`https://dream-design-server.herokuapp.com/api/users/project/remove/${this.userData._id}`,
+            {
+              method: "PATCH",
+              headers: {
+                "Content-Type": "application/json",
+                "Accept": "application.json"
+              },
+              body:JSON.stringify({_id: id})
+            }).then(res => res.json())
+            .then(data =>{
+              console.log("result", data)
+              if(data.message === "ok"){
+                localStorage.setItem("user",JSON.stringify(data.data))
+                this.projects = this.projects.filter(p => p._id !== id);
+              }
+
+            })
       }
     }
   }
   </script>
   <style scoped>
-    .profile__portfolio__project{
+.portfolio{
+  color: black;
+}
+    .portfolio__image{
       background-repeat: no-repeat;
       background-size: cover;
+      width: 100px;
+      height: 100px;
       /*background-color: #e3fe52;*/
       border-radius: 5px;
       margin: 10px;
     
+    }
+    h2{
+      color: black;
+      font-size: 20px;
+      font-weight: 400;
+    }
+    .profile__title{
+      display: flex;
+    }
+    .profile__title button{
+      margin: 0 0 0 10px;
+      padding: 5px;
+      border-radius: 4px;
+      border: none;
+      cursor: pointer;
     }
   </style>
   

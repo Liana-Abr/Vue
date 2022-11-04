@@ -1,41 +1,33 @@
 <template>
-  <header class="header_container">
-
+  <header class="header_container" >
     <router-link to="/">Главная</router-link>
-    <router-link to="/profile">Профиль</router-link>
+    <div class="modal_container"  >
+      <router-link to="/profile" :style="{display: seeLink ? 'flex' : 'none'}" >Профиль</router-link>
+    </div>
+<!--    <router-link to="/profile" >Профиль</router-link>-->
     <router-link to="/login">Вход</router-link>
+    <router-link to="/test">Тест</router-link>
+    <!-- сделать display или visibility hidden с помощью bind class(:class)-->
 <!--    <router-link to="/auth">Auth</router-link>-->
 <!--    <button v-on:click="modalOpen">Вход</button>-->
   </header>
-<!--  <div class="modal_container" :style="{display: modalActivity ? 'flex' : 'none'}">-->
-<!--    <h3>Регистрация</h3>-->
-<!--    <button v-on:click="modalClose" class="modal-close">X</button>-->
-<!--    <input type="text" placeholder="Имя">-->
-<!--    <input type="email" placeholder="name@mail.ru">-->
-<!--    <input type="password" placeholder="Пароль">-->
-<!--    <input type="password" placeholder="Повторите пароль">-->
-<!--    <input type="submit"/>-->
 
-<!--  </div>-->
 
 </template>
 
 <script>
   export default {
     name: "page-header",
+    auth: false ,
     data(){
       return {
-        // modalActivity: false,
+        seeLink: false
       }
     },
-    // methods:{
-    //   modalOpen(){
-    //     this.modalActivity = true;
-    //   },
-    //   modalClose(){
-    //     this.modalActivity = false;
-    //   }
-    // }
+    created() {
+      this.seeLink = !!localStorage.getItem("user");
+    },
+
 }
 </script>
 
@@ -83,17 +75,18 @@ input[type=submit]{
 /*  cursor: pointer;*/
 /*}*/
 .header_container{
+  height: 110px;
+  text-align: center;
+  color: #FFFFFF;
+  font-size: 24px;
+  padding-top: 40px;
   background-color: white;
   box-shadow: -5px 10px 10px -8px #bdbdbd;
   border-radius: 25px;
-  padding: 0 0 20px 0;
   margin: 30px 0 30px 0;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  width: 1200px;
-  position: relative;
-  left:26%;
 }
 
 .header_container a{

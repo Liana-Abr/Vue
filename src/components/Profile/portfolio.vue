@@ -1,24 +1,36 @@
 <template>
+<!--  блок с работами-->
  <div class="profile___portfolio">
-  <profile-project></profile-project>
-    <!-- <div class="profile__portfolio__project"></div>
-    <div class="profile__portfolio__project"></div>
-    <div class="profile__portfolio__project"></div>
-    <div class="profile__portfolio__project"></div>
-    <div class="profile__portfolio__project"></div>
-    <div class="profile__portfolio__project"></div> -->
+  <profile-project :userData="userData"></profile-project>
     
  </div>
 </template>
 
 <script>
+
 import Project from "@/components/Profile/project";
+
 export default {
   name: "profile-portfolio",
+  props:["userData"],
   components:{
     "profile-project": Project
+  },
+  data(){
+    return {
+      size: 200,
+      title: [
+        "first",
+        "second",
+        "third",
+        "fifth"
+      ],
+      projects:[],
+    }
+  },
+  created() {
+    console.log(this.userData);
   }
-  
 }
 </script>
 
@@ -29,5 +41,12 @@ export default {
       /* background-color: blue; */
       height: auto;
     }
-   
+    .portfolio {
+      padding: 30px 0;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .portfolio__item {
+      padding: 30px;
+    }
 </style>

@@ -48,7 +48,7 @@
       height: 20px;
       margin: 20px;
       padding: 5px;
-    
+      color: black;
     }
   </style>
   

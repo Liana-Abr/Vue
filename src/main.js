@@ -6,13 +6,16 @@ import Profile from "@/components/Profile/index";
 import Login from "@/components/Login/index";
 import Auth from "@/components/Auth/index";
 import ChangePwd from "@/components/ChangePwd";
+import Test from "@/components/Test";
 
 const routes = [
     {path: "/",component: Home},
     {path: "/profile", component: Profile},
     {path: "/login", component: Login},
     {path: "/auth", component: Auth},
-    {path: "/changepwd",component: ChangePwd}
+    {path: "/changepwd",component: ChangePwd},
+    {path: "/test",component: Test},
+
 
 ];
 
@@ -21,6 +24,7 @@ const router = createRouter({
     routes
 })
 import App from './App.vue';
+
 
 
 

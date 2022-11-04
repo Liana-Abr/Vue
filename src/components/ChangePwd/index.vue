@@ -13,7 +13,7 @@
 
 
   </div>
-  
+
 </template>
 
 <script>
@@ -39,6 +39,7 @@ font-weight: 300;
     width: 46%;
     height: 70%;
     position: absolute;
+    left: 25%;
 }
 .changepwd_container input{
   font-size: 16px;
@@ -63,9 +64,6 @@ font-weight: 300;
 }
 .changepwd_container button{
   text-decoration: none;
-    color: #747474;
-    letter-spacing: 0.2px;
-    text-transform: uppercase;
     display: inline-block;
     margin-top: 20px;
     width: 100%;
@@ -77,7 +75,6 @@ font-weight: 300;
     text-transform: uppercase;
     background: #e5e5e6;
     color: rgb(121, 121, 121);
-    letter-spacing: 0.2px;
     outline: 0;
     transition: all .3s;
 }
