@@ -60,7 +60,7 @@
       background-size: cover;
       width: 100px;
       height: 100px;
-      /*background-color: #e3fe52;*/
+      background-color: lightgrey;
       border-radius: 5px;
       margin: 10px;
     

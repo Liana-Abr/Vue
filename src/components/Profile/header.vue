@@ -6,7 +6,7 @@
     </div>
 <!--    <router-link to="/profile" >Профиль</router-link>-->
     <router-link to="/login">Вход</router-link>
-    <router-link to="/test">Тест</router-link>
+    <!-- <router-link to="/test">Тест</router-link> -->
     <!-- сделать display или visibility hidden с помощью bind class(:class)-->
 <!--    <router-link to="/auth">Auth</router-link>-->
 <!--    <button v-on:click="modalOpen">Вход</button>-->

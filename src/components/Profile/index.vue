@@ -36,7 +36,7 @@
             <div class="profile__image"></div>
             <h2>{{userData.name}}</h2>
             <div class="profile__item">
-              <profile-contacts v-for="(c,i) in contacts" :key="i" :type="c.type" :data="c.value"/>
+             <profile-contacts :userData="userData"/>
             </div>
             <div class="profile-stats__item">
               <profile-stats v-for="(i,v) in stats" :key="v" :icon="i.icon" :data="i.value"/>
